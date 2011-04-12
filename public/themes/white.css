@@ -1,0 +1,35 @@
+html, body {
+	font-family: Arial;
+	background-color: white;
+	color: #3d3d3d;
+}
+
+td.time {
+	color: #a0a0a0;
+}
+
+input#message, input#username {
+	font-family: Arial;
+	background-color: white;
+	color: #3d3d3d;
+}
+
+a {
+	color: blue;
+}
+
+div#loginstatus {
+	background-color: white;
+}
+
+span.yourname {
+	color: #80b0ff;
+}
+
+tr.admin th, tr.admin td.statement {
+	color: #ff8000;
+}
+
+#form {
+	border-top: 1px solid #3d3d3d;
+}

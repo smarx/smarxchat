@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+	<title>chat.smarx</title>
+	<link href="/stylesheet.css" rel="stylesheet" type="text/css" />
+	<link id="theme" href="/themes/retro.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="jquery.mousewheel.min.js"></script>
+	<script type="text/javascript" src="smarxchat.js"></script>
+</head>
+<body>
+	<div id="loginstatus">
+		<span id="yourname"><%= username %></span> | <a href="/login?force=true">switch user</a>
+		<br />
+		<a id="themetoggle" href="#">switch theme</a>
+	</div>
+	<form id="form">
+		<input id="message" type="text" />
+	</form>
+	
+	<div id="messages">
+	</div>
+</body>
+</html>

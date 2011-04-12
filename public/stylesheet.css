@@ -1,0 +1,72 @@
+html, body {
+	margin: 5px;
+	font-size: 14pt;
+}
+
+table {
+	margin-top: 3px;
+	font-size: 14pt;
+}
+
+th, td {
+	vertical-align: top;
+}
+
+th {
+	width: 170px;
+	text-align: right;
+}
+
+td.statement {
+	padding-left: 8px;
+}
+
+div#messages p {
+	margin: 0;
+}
+
+input#message, input#username {
+	border: none;
+	font-size: 14pt;
+}
+
+input#message {
+	width: 100%;
+}
+
+input#message:focus {
+	outline-width: 0;
+}
+
+form#login {
+	text-align: center;
+}
+
+td.announcement {
+	font-style: italic;
+}
+
+#form {
+	position: absolute;
+	display: block;
+	left: 5px;
+	right: 5px;
+	bottom: 0px;
+	z-index: -1;
+}
+
+div#messages {
+	overflow: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 60px;
+	z-index: -1;
+}
+
+div#loginstatus {
+	float: right;
+	font-size: 10pt;
+	text-align: right;
+}

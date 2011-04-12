@@ -1,0 +1,11 @@
+{
+    "name": "smarxchat",
+    "version": "0.0.1",
+    "dependencies": {
+        "express":"2.2.0",
+        "ejs":"0.3.1",
+        "oauth":"0.9.0",
+        "sax":"0.1.2"
+    },
+    "files":[]
+}

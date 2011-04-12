@@ -1,0 +1,35 @@
+html, body {
+	font-family: Consolas, Courier;
+	background-color: #0d0d0d;
+	color: #00ff00;
+}
+
+td.time {
+	color: #008800;
+}
+
+input#message, input#username {
+	font-family: Consolas, Courier;
+	background-color: #0d0d0d;
+	color: #00ff00;
+}
+
+a {
+	color: #00ff00;
+}
+
+div#loginstatus {
+	background-color: #0d0d0d;
+}
+
+span.yourname {
+	color: #80b0ff;
+}
+
+tr.admin th, tr.admin td.statement {
+	color: #ff8000;
+}
+
+#form {
+	border-top: 1px solid #00c000;
+}

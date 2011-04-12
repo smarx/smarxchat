@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>SmarxChat - please log in</title>
+	<link href="/stylesheet.css" rel="stylesheet" type="text/css" />
+	<link href="/themes/retro.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="blinkylink.js"></script>
+</head>
+<body>
+	<div style="text-align: center; margin-top: 100px;">
+		<p>To chat, you'll first need to <a class="blinky" href="/login">sign in with Twitter</a>.</p>
+		<% if(whostring) { %>
+			<p>The following people are currently chatting: <%= whostring %></p>
+		<% } else { %>
+			<p>There is currently no one chatting.</p>
+		<% } %>
+	</div>
+</body>
+</html>
