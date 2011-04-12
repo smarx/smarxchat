@@ -9,4 +9,4 @@ This code is written in coffeescript. `npm install coffee-script` and then `node
 
 Other dependencies are specified in npm style via `package.json`.
 
-Specify the port number on the commandline, like `app.js -p 8080`.
+Specify the port number on the commandline, like `node app.js -p 8080`.
