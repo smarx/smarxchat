@@ -62,7 +62,7 @@ check = (v) ->
 		version = v
 		check(v)
 	, 5000
-	expiration = new Date().getTime() - 30000
+	expiration = new Date().getTime() - 20000
 	if pending.length > 0
 		for i in [(pending.length-1)..0]
 			if pending[i].timestamp < expiration
