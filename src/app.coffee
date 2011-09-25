@@ -1,4 +1,3 @@
-require.paths.push '.'
 wastorage = require 'wastorage'
 express = require 'express'
 util = require 'util'
@@ -31,12 +30,6 @@ log = (message) ->
 	}
 log "hello #{process.pid} - #{process.env['COMPUTERNAME']}"
 log "goodbye #{process.pid}"
-
-###
-setInterval () ->
-	log "#{process.pid}: #{util.inspect process.memoryUsage()}"
-, 1000
-###
 
 process.on 'uncaughtException', (err) ->
   log('UNCAUGHT exception: ' + err)
@@ -79,20 +72,6 @@ check = (v) ->
 			for message in messages
 				if message.RowKey >= lastseen
 					console.log "ERROR!"
-			###
-			tables.insert 'ChatMessages', {
-				'PartitionKey': '',
-				'RowKey': pad(maxtime - new Date().getTime())
-				'Message': "I\'m here. #{process.pid}"
-				'IsAnnouncement': true
-			} for message in messages when message.Message == '/running'
-			tables.insert 'ChatMessages', {
-				'PartitionKey': '',
-				'RowKey': pad(maxtime - new Date().getTime())
-				'Message': (util.inspect process.memoryUsage()) + "*** #{process.pid} ***"
-				'IsAnnouncement': true
-			} for message in messages when message.Message == '/memory'
-			###
 			lastseen = messages[0].RowKey
 			buffer = messages.concat buffer
 			buffer.pop() until buffer.length <= 15
@@ -115,6 +94,7 @@ check_logouts = () ->
 		'$filter': "PartitionKey eq '' and LastActivity lt datetime'#{JSON.stringify(new Date(new Date().getTime() - 60000))[1...-1]}'"
 	}, (oldusers) ->
 		for user in oldusers
+			console.log 'deleting'
 			tables.delete 'Users', user.PartitionKey, user.RowKey, (response) ->
 				if response.statusCode == 204
 					tables.insert 'ChatMessages', {
@@ -302,4 +282,4 @@ app.configure () ->
 		log err
 		log err.stack
 
-app.listen process.argv[3]
+app.listen process.env.PORT || process.argv[3]

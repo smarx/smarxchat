@@ -1,13 +1,10 @@
-sys = require 'sys'
 crypto = require 'crypto'
 http = require 'http'
 sax = require 'sax'
 querystring = require 'querystring'
-httpclientpool = require 'httpclientpool'
 
 class TableStorage
 	constructor: (@account, @key) ->
-		@clientpool = new httpclientpool.HttpClientPool()
 	
 	_doOperation: (method, path, query, data, callback, errCallback) ->
 		data = data or ''
@@ -28,12 +25,20 @@ class TableStorage
 		}
 		if method.toLowerCase() == 'put' or method.toLowerCase() == 'delete'
 			headers['If-Match'] = '*'
+		options = {
+			host: "#{@account}.table.core.windows.net",
+			port: 80,
+			path: reqpath,
+			method: method,
+			headers: headers
+		}
+		req = http.request options, callback
 		if @proxyServer?
-			req = @clientpool.request @proxyPort, @proxyServer, true, errCallback, method, reqpath, headers
-		else
-			req = @clientpool.request 80, "#{@account}.table.core.windows.net", true, errCallback, method, reqpath, headers
+			options.host = @proxyServer
+			options.port = @proxyPort
+		req.setNoDelay true
+		req.on 'error', errCallback if errCallback?
 		req.end data
-		req.on 'response', callback if callback?
 
 	createTable: (table, callback) ->
 		@insert 'Tables', { 'TableName': table }, callback
